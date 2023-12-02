@@ -7,7 +7,7 @@ enum Player {
 }
 
 
-pub fn main_loop(field: GameField){
+pub fn main_loop(mut field: GameField){
 
     let mut current_player = Player::X;
     let game_field = &mut field;
@@ -16,7 +16,7 @@ pub fn main_loop(field: GameField){
         print_game_field(game_field, &current_player);
 
         let player_choise = get_user_input(&current_player);
-        field.make_move(player_choise.0, player_choise.1);
+        game_field.make_move(player_choise.0, player_choise.1);
 
         if check_win_condition(game_field) {break}
 

@@ -7,7 +7,7 @@ const FIELD_SIZE: u8 = 3;
 
 fn main() {
     let field_size = FIELD_SIZE * FIELD_SIZE;
-    let game_field = field::GameField::new(field_size);
+    let mut game_field = field::GameField::new(field_size);
 
     core::main_loop(game_field);
 }

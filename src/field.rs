@@ -22,7 +22,7 @@ pub struct GameField{
 
 impl GameField {
     pub fn new(size: u8) -> Self{
-        let mut empty_field = vec![Cell::Empty; size as usize];
+        let empty_field = vec![Cell::Empty; size as usize];
         return Self { field: empty_field, size: size}
     }
 

@@ -26,8 +26,16 @@ impl GameField {
         return Self { field: empty_field, size: size}
     }
 
-    pub fn make_move(mut self, ceil_num: u8, value: Cell){
-        self.field[ceil_num as usize] = value
+    pub fn make_move(&mut self, ceil_num: u8, value: Cell){
+        self.field[ceil_num as usize] = value;
+    }
+
+    pub fn check_win_condition(&self) -> bool{
+        true
+    }
+
+    fn check_diagonals(&self) -> bool {
+        true
     }
 }
 

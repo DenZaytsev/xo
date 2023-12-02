@@ -1,9 +1,21 @@
+use std::fmt;
+
 use crate::field::{GameField, Cell};
 
 #[derive(Debug)]
 enum Player {
     X,
     O,
+}
+
+
+impl fmt::Display for Player {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            Player::X => write!(f, "Player::X"),
+            Player::O => write!(f, "Player::O"),
+        }
+    }
 }
 
 
@@ -18,8 +30,10 @@ pub fn main_loop(mut field: GameField){
         let player_choise = get_user_input(&current_player);
         game_field.make_move(player_choise.0, player_choise.1);
 
-        if check_win_condition(game_field) {break}
-
+        if game_field.check_win_condition() {
+            println!("{current_player} WIN !!!");
+            break
+        }
 
         current_player = match current_player {
             Player::O => Player::X,
@@ -45,9 +59,6 @@ fn get_user_input(player: &Player) -> (u8, Cell){
 
 }
 
-fn check_win_condition(game_field: &GameField) -> bool {
-    return true;
-}
 
 fn print_game_field(game_field: &GameField, player: &Player){
     println!("Current player: {:?}", player);
